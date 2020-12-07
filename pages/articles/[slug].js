@@ -37,7 +37,7 @@ export default function Article({ article }) {
       <h1>{article.fields.title}</h1>
       <div>{documentToReactComponents(article.fields.content, {
         renderNode: {
-          [BLOCKS.EMBEDDED_ASSET]: node =>
+          [BLOCKS.EMBEDDED_ASSET]: (node) =>
             <Image 
               src={'https://'+node.data.target.fields.file.url} 
               width={node.data.target.fields.file.details.image.width} 
