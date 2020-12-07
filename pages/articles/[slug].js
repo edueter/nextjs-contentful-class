@@ -39,7 +39,7 @@ export default function Article({ article }) {
         renderNode: {
           [BLOCKS.EMBEDDED_ASSET]: node =>
             <Image 
-              src={'https://' + node.data.target.fields.file.url} 
+              src={'https://'+node.data.target.fields.file.url} 
               width={node.data.target.fields.file.details.image.width} 
               height={node.data.target.fields.file.details.image.height} />
         }
