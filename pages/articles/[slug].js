@@ -32,17 +32,22 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Article({ article }) {
+  console.log(article)
   if (!article) return <div>404</div>
   return (
     <div>
       <h1>{article.fields.title}</h1>
       <div>{documentToReactComponents(article.fields.content, {
         renderNode: {
-          [BLOCKS.EMBEDDED_ASSET]: (node) =>
-            <Image 
-              src={'https://'+node.data.target.fields.file.url} 
-              width={node.data.target.fields.file.details.image.width} 
-              height={node.data.target.fields.file.details.image.height} />
+          [BLOCKS.EMBEDDED_ASSET]: (node) => (
+            <div>
+              <Image 
+                src={`https://${node.data.target.fields.file.url}`} 
+                width={node.data.target.fields.file.details.image.width} 
+                height={node.data.target.fields.file.details.image.height} />
+                <span>{node.data.target.fields.title}</span>
+            </div>
+          )
         }
       })}</div>
     </div>
